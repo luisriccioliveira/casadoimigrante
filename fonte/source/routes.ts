@@ -1,0 +1,2 @@
+// Query routes keep GitHub Pages refreshes inside the repository's index page.
+export function routeHref(path:string):string{if(!path.startsWith('/')||path.startsWith('//'))return path;const u=new URL(path,'https://routes.invalid');const match=u.pathname.match(/^\/(pt|es)(?:\/imovel\/([A-Z0-9-]+))?\/?$/);if(match){const params=new URLSearchParams(u.search);params.set('lang',match[1]);if(match[2])params.set('imovel',match[2]);return '?'+params.toString()+u.hash}if(u.pathname==='/admin'||u.pathname==='/login')return '?pagina=admin';return path}
